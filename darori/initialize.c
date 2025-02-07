@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 22:21:37 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/06 22:23:50 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:16:12 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	declare_info(t_fractol *fractol)
 
 void	initialize(t_complex *z, t_complex *c, t_fractol *fractal)
 {	
-	if (!ft_strncmp(fractal->name, "julia", 5))
+	if (!ft_strcmp(fractal->name, "julia"))
 	{
 		c->x = fractal->julia_x;
 		c->y = fractal->julia_y;

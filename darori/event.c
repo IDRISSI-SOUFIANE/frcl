@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:58:27 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/07 14:57:11 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:24:36 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	close_window(t_fractol *fractol)
 {
 	mlx_destroy_image(fractol->mlx_connection, fractol->img.img_ptr);
 	mlx_destroy_window(fractol->mlx_connection, fractol->mlx_window);
-	free(fractol->mlx_connection);
 	exit(0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:09:43 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/06 22:22:13 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:23:41 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,6 @@ void	my_pixel_put(int x, int y, t_img *img, int color)
 
 	offset = (y * img->line_len) + (x * (img->bpp / 8));
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
-}
-
-void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractal)
-{	
-	if (!ft_strncmp(fractal->name, "julia", 5))
-	{
-		c->x = fractal->julia_x;
-		c->y = fractal->julia_y;
-	}
-	else
-	{
-		c->x = z->x;
-		c->y = z->y;
-	}
 }
 
 void	draw_pixel(int x, int y, t_fractol *fractol)

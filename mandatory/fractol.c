@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:52:48 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/06 22:23:40 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/07 22:52:11 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ void	initialize_window(t_fractol *fractol)
 		(mlx_destroy_window(fractol->mlx_connection, fractol->mlx_window),
 			free(fractol->mlx_connection), write(2, "Error\n", 6), exit(1));
 	fractol->img.img_ptr = mlx_new_image(fractol->mlx_connection,
-		WIDTH, HEIGHT);
+			WIDTH, HEIGHT);
 	if (NULL == fractol->img.img_ptr)
 		(mlx_destroy_window(fractol->mlx_connection, fractol->mlx_window),
 			free(fractol->mlx_connection), write(2, "Error\n", 6), exit(1));
-	fractol->img.pixels_ptr = mlx_get_data_addr(fractol->img.img_ptr, &fractol->img.bpp,
-		&fractol->img.line_len, &fractol->img.endian);
+	fractol->img.pixels_ptr = mlx_get_data_addr(fractol->img.img_ptr,
+			&fractol->img.bpp, &fractol->img.line_len,
+			&fractol->img.endian);
 	if (NULL == fractol->img.pixels_ptr)
 		(mlx_destroy_image(fractol->mlx_connection, fractol->img.img_ptr),
-		mlx_destroy_window(fractol->mlx_connection, fractol->mlx_window),
-		free(fractol->mlx_connection), write(2, "Error\n", 6), exit(1));
+			mlx_destroy_window(fractol->mlx_connection, fractol->mlx_window),
+			free(fractol->mlx_connection), write(2, "Error\n", 6), exit(1));
 	handle_event(fractol);
 	declare_info(fractol);
 }

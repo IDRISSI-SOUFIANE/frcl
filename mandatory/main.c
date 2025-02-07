@@ -14,7 +14,7 @@
 
 int	ft_check(int ac, char *av[], t_fractol *fractol)
 {
-	double divisor;
+	double	divisor;
 
 	divisor = 1.0;
 	if ((ac == 2 && !ft_strcmp(av[1], "mandelbrot"))
@@ -37,10 +37,11 @@ int	ft_check(int ac, char *av[], t_fractol *fractol)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_fractol	fractol;
+
 	if (ft_check(ac, av, &fractol))
-	(ft_putstr(ERROR), exit(1));
+		(ft_putstr(ERROR), exit(1));
 	return (0);
 }

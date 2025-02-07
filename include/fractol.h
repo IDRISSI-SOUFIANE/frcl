@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:03 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/07 21:56:41 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/07 22:38:17 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,35 +55,33 @@ typedef struct s_complex
 	double	y;
 }	t_complex;
 
-
 typedef struct s_map
 {
-    double n_mn;
-    double n_mx;
-    double o_mn;
-    double o_mx;
-} t_map;
+	double	n_mn;
+	double	n_mx;
+	double	o_mn;
+	double	o_mx;
+}	t_map;
 
-
-int		ft_strcmp(char *s1, char *s2);
-int		ft_handle(char *s);
-int		check_sign(char *s, int *i);
-double	ft_atof(char *s, double divisor);
-void	ft_putstr(char *s);
-
-void	initialize_window(t_fractol *fractol);
-
-void	fractol_render(t_fractol *fractol);
-void	draw_pixel(int x, int y, t_fractol *fractol);
-void	my_pixel_put(int x, int y, t_img *img, int color);
-
-double map(double n, t_map range);
-// double		map(double n, double n_mn, double n_mx, double o_mn, double o_mx);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 
-void	handle_event(t_fractol *fractal);
+int			ft_strcmp(char *s1, char *s2);
+int			ft_handle(char *s);
+int			check_sign(char *s, int *i);
+double		ft_atof(char *s, double divisor);
+void		ft_putstr(char *s);
 
-void	declare_info(t_fractol *fractol);
-void	initialize(t_complex *z, t_complex *c, t_fractol *fractal);
+void		initialize_window(t_fractol *fractol);
+
+void		fractol_render(t_fractol *fractol);
+void		draw_pixel(int x, int y, t_fractol *fractol);
+void		my_pixel_put(int x, int y, t_img *img, int color);
+
+double		map(double n, t_map range);
+
+void		handle_event(t_fractol *fractal);
+
+void		declare_info(t_fractol *fractol);
+void		initialize(t_complex *z, t_complex *c, t_fractol *fractal);
 #endif

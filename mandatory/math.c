@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 22:58:17 by sidrissi          #+#    #+#             */
+/*   Updated: 2025/02/07 22:58:18 by sidrissi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
-double map(double n, t_map range)
+double	map(double n, t_map range)
 {
-    return ((range.n_mx - range.n_mn) * ((n - range.o_mn) / (range.o_mx - range.o_mn)) + range.n_mn);
+	return ((range.n_mx - range.n_mn) * ((n - range.o_mn)
+			/ (range.o_mx - range.o_mn)) + range.n_mn);
 }
-
 
 t_complex	sum_complex(t_complex z1, t_complex z2)
 {

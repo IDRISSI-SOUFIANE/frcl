@@ -20,7 +20,7 @@ void	declare_info(t_fractol *fractol)
 }
 
 void	initialize(t_complex *z, t_complex *c, t_fractol *fractal)
-{	
+{
 	if (!ft_strcmp(fractal->name, "julia"))
 	{
 		c->x = fractal->julia_x;

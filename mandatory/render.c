@@ -110,35 +110,31 @@ void	my_pixel_put(int x, int y, t_img *img, int color)
 //     my_pixel_put(x, y, &fractol->img, BLACK);
 // }
 
-
-void draw_pixel(int x, int y, t_fractol *fractol)
+void	draw_pixel(int x, int y, t_fractol *fractol)
 {
-    t_complex   z;
-    t_complex   c;
-    int         i = 0;
-    int         color = 0;
+	t_complex	z;
+	t_complex	c;
+	int			i;
+	int			color;
 
-    z.x = map(x, (t_map){-2, 2, 0, WIDTH}) * fractol->zoom;
-    z.y = map(y, (t_map){2, -2, 0, HEIGHT}) * fractol->zoom;
-
-    initialize(&z, &c, fractol);
-
-    while (i < fractol->nb_of_iteration)
-    {
-        z = sum_complex(square_complex(z), c);
-        if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
-        {
-            color = map(i, (t_map){BLACK, WHITE, 0, fractol->nb_of_iteration});
-            my_pixel_put(x, y, &fractol->img, color);
-            return ;
-        }
-        ++i;
-    }
-    my_pixel_put(x, y, &fractol->img, BLACK);
+	i = 0;
+	color = 0;
+	z.x = map(x, (t_map){-2, 2, 0, WIDTH}) * fractol->zoom;
+	z.y = map(y, (t_map){2, -2, 0, HEIGHT}) * fractol->zoom;
+	initialize(&z, &c, fractol);
+	while (i < fractol->nb_of_iteration)
+	{
+		z = sum_complex(square_complex(z), c);
+		if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
+		{
+			color = map(i, (t_map){BLACK, WHITE, 0, fractol->nb_of_iteration});
+			my_pixel_put(x, y, &fractol->img, color);
+			return ;
+		}
+		++i;
+	}
+	my_pixel_put(x, y, &fractol->img, BLACK);
 }
-
-
-
 
 void	fractol_render(t_fractol *fractol)
 {

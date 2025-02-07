@@ -40,7 +40,7 @@ int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 
 void	handle_event(t_fractol *fractol)
 {
-    mlx_key_hook(fractol->mlx_window, key_press, fractol);
-    mlx_hook(fractol->mlx_window, 17, 0, close_window, fractol);
+	mlx_key_hook(fractol->mlx_window, key_press, fractol);
+	mlx_hook(fractol->mlx_window, 17, 0, close_window, fractol);
 	mlx_mouse_hook(fractol->mlx_window, mouse_hook, fractol);
 }

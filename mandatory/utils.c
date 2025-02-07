@@ -20,11 +20,11 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			break;
+			break ;
 		i++;
 	}
 	if (s1[i] != s2[i])
-		return (s1[i] - s2[i]);	
+		return (s1[i] - s2[i]);
 	return (s1[i] - s2[i]);
 }
 
@@ -55,6 +55,7 @@ int	ft_handle(char *s)
 	}
 	return (0);
 }
+
 int	check_sign(char *s, int *i)
 {
 	int	sign;
@@ -68,6 +69,7 @@ int	check_sign(char *s, int *i)
 	}
 	return (sign);
 }
+
 double	ft_atof(char *s, double divisor)
 {
 	int		i;
@@ -78,7 +80,7 @@ double	ft_atof(char *s, double divisor)
 	res = 0.0;
 	fraction = 0.0;
 	i = 0;
-	 while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
 		i++;
 	sign = check_sign(s, &i);
 	while (s[i] && (s[i] >= '0' && s[i] <= '9'))

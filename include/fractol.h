@@ -1,14 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 20:37:03 by sidrissi          #+#    #+#             */
+/*   Updated: 2025/02/07 21:56:41 by sidrissi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
-#define FRACTOL_H
+# define FRACTOL_H
 
-#include "../minilibx_opengl/mlx.h"
-#include <libc.h>
+# include "../minilibx_opengl/mlx.h"
+# include <unistd.h>
+# include <stdlib.h> 
 
-#define WIDTH 800
-#define HEIGHT 800
+# define ERROR "Error: please respect the compilation command:\n\
+\t./fractol <write (mandelbrot) or (julia)>\n\
+\t\tif chose julia write the coordinate (x and y)\n"
+# define WIDTH 800
+# define HEIGHT 800
 
-#define BLACK 0x000000
-#define WHITE 0xFFFFFF
+# define BLACK 0x000000
+# define WHITE 0X1C1C1C
 
 typedef struct s_img
 {
@@ -19,7 +35,6 @@ typedef struct s_img
 	int		line_len;
 }	t_img;
 
-
 typedef struct s_fractol
 {
 	char	*name;
@@ -28,47 +43,47 @@ typedef struct s_fractol
 	t_img	img;
 	int		nb_of_iteration;
 	int		escape_value;
-	double	offset_x;
-	double	offset_y;
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
 
 }	t_fractol;
 
-typedef struct	s_complex
+typedef struct s_complex
 {
 	double	x;
 	double	y;
 }	t_complex;
 
 
-/*utils.c*/
-int	ft_strncmp(char *s1, char *s2, int n);
-int	ft_handle(char *s);
-int	check_sign(char *s, int *i);
-double	ft_atof(char *s, double divisor);
+typedef struct s_map
+{
+    double n_mn;
+    double n_mx;
+    double o_mn;
+    double o_mx;
+} t_map;
 
-/*fractol.c*/
+
+int		ft_strcmp(char *s1, char *s2);
+int		ft_handle(char *s);
+int		check_sign(char *s, int *i);
+double	ft_atof(char *s, double divisor);
+void	ft_putstr(char *s);
+
 void	initialize_window(t_fractol *fractol);
 
-/*render.c*/
 void	fractol_render(t_fractol *fractol);
 void	draw_pixel(int x, int y, t_fractol *fractol);
-void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractal);
 void	my_pixel_put(int x, int y, t_img *img, int color);
 
-/*math.c*/
-double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double map(double n, t_map range);
+// double		map(double n, double n_mn, double n_mx, double o_mn, double o_mx);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 
-
-/*event.c*/
 void	handle_event(t_fractol *fractal);
 
-/*initialize*/
 void	declare_info(t_fractol *fractol);
 void	initialize(t_complex *z, t_complex *c, t_fractol *fractal);
-
 #endif

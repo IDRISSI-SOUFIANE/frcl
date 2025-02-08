@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:03 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/07 22:38:17 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:27:51 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define HEIGHT 800
 
 # define BLACK 0x000000
-# define WHITE 0X1C1C1C
+# define BLUE 0X1C1C1C
 
 typedef struct s_img
 {

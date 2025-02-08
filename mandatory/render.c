@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:09:43 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/08 11:27:28 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:50:15 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_pixel(int x, int y, t_fractol *fractol)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
 		{
-			color = map(i, (t_map){BLACK, WHITE, 0, fractol->nb_of_iteration});
+			color = map(i, (t_map){BLACK, BLUE, 0, fractol->nb_of_iteration});
 			my_pixel_put(x, y, &fractol->img, color);
 			return ;
 		}

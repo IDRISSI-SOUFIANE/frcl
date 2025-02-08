@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:58:27 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/08 10:59:12 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:39:42 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int	key_press(int keycode, t_fractol *fractol)
 {
 	if (keycode == 53)
 		close_window(fractol);
+	else if (keycode == 123)
+		fractol->offset_x += (0.5 * fractol->zoom);
+	else if (keycode == 124)
+		fractol->offset_x -= (0.5 * fractol->zoom);
+	else if (keycode == 125)
+		fractol->offset_y -= (0.5 * fractol->zoom);
+	else if (keycode == 126)
+		fractol->offset_y += (0.5 * fractol->zoom);
+	else if (keycode == 49)
+		fractol->nb_of_iteration += 10;
+	fractol_render(fractol);
 	return (0);
 }
 

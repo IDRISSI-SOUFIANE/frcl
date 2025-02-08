@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:09:43 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/08 11:27:28 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:05:06 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../include/fractol_bonus.h"
 
 void	my_pixel_put(int x, int y, t_img *img, int color)
 {
@@ -24,27 +24,34 @@ void	draw_pixel(int x, int y, t_fractol *fractol)
 {
 	t_complex	z;
 	t_complex	c;
+	double		xtemp;
 	int			i;
 	int			color;
 
 	i = 0;
 	color = 0;
-	z.x = map(x, (t_map){-2, 2, 0, WIDTH}) * fractol->zoom;
-	z.y = map(y, (t_map){2, -2, 0, HEIGHT}) * fractol->zoom;
-	initialize(&z, &c, fractol);
+	initialize(&x, &y, &z, &c, fractol);
 	while (i < fractol->nb_of_iteration)
 	{
-		z = sum_complex(square_complex(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
-		{
-			color = map(i, (t_map){BLACK, WHITE, 0, fractol->nb_of_iteration});
-			my_pixel_put(x, y, &fractol->img, color);
-			return ;
-		}
-		++i;
+		xtemp = (z.x * z.x - z.y * z.y) + c.x;
+		z.y = fabs(2.0 * z.x * z.y) + c.y;
+		z.x = fabs(xtemp);
+
+		if ((z.x * z.x) + (z.y * z.y) >= 4.0)
+			break;
+		i++;
 	}
-	my_pixel_put(x, y, &fractol->img, BLACK);
+	// Set color based on escape count
+	if (i == fractol->nb_of_iteration)
+		color = 0; // Inside set → Black
+	else
+		color = (i * 255 / fractol->nb_of_iteration) << 9; // Red gradient
+
+	my_pixel_put(x, y, &fractol->img, color);
 }
+
+
+
 
 void	fractol_render(t_fractol *fractol)
 {
@@ -65,3 +72,4 @@ void	fractol_render(t_fractol *fractol)
 	mlx_put_image_to_window(fractol->mlx_connection, fractol->mlx_window,
 		fractol->img.img_ptr, 0, 0);
 }
+

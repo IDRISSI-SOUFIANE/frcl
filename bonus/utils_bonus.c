@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 22:21:37 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/08 10:49:11 by sidrissi         ###   ########.fr       */
+/*   Created: 2025/02/06 10:25:30 by sidrissi          #+#    #+#             */
+/*   Updated: 2025/02/08 11:00:26 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../include/fractol_bonus.h"
 
-void	declare_info(t_fractol *fractol)
+int	ft_strcmp(char *s1, char *s2)
 {
-	fractol->escape_value = 4;
-	fractol->nb_of_iteration = 180;
-	fractol->zoom = 1;
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			break ;
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
 }
 
-void	initialize(t_complex *z, t_complex *c, t_fractol *fractal)
+void	ft_putstr(char *s)
 {
-	if (!ft_strcmp(fractal->name, "julia"))
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		c->x = fractal->julia_x;
-		c->y = fractal->julia_y;
-	}
-	else
-	{
-		c->x = z->x;
-		c->y = z->y;
+		write(2, &s[i], 1);
+		i++;
 	}
 }

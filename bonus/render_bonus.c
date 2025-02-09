@@ -6,7 +6,7 @@
 /*   By: sidrissi <sidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:09:43 by sidrissi          #+#    #+#             */
-/*   Updated: 2025/02/08 18:58:05 by sidrissi         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:13:12 by sidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_pixel(int x, int y, t_fractol *fractol, double *xtemp)
 	initialize2(&z, fractol);
 	while (i < fractol->nb_of_iteration)
 	{
-		*xtemp = (z.x * z.x - z.y * z.y) + c.x;
+		*xtemp = (z.x * z.x - z.y * z.y) + c.x; 
 		z.y = fabs(2.0 * z.x * z.y) + c.y;
 		z.x = fabs(*xtemp);
 		if ((z.x * z.x) + (z.y * z.y) >= 4.0)
